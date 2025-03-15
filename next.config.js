@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  output: 'standalone',
+  images: {
+    domains: ['localhost'],
+  },
 };
 
 module.exports = nextConfig; 
