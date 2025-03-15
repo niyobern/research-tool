@@ -3,6 +3,7 @@
 import { Fragment, ReactNode } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { signOut } from 'next-auth/react'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard' },
@@ -74,14 +75,14 @@ export default function MainLayout({ children }: MainLayoutProps) {
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="/auth/signout"
+                                <button
+                                  onClick={() => signOut()}
                                   className={`${
                                     active ? 'bg-gray-100' : ''
-                                  } block px-4 py-2 text-sm text-gray-700`}
+                                  } block w-full text-left px-4 py-2 text-sm text-gray-700`}
                                 >
                                   Sign out
-                                </a>
+                                </button>
                               )}
                             </Menu.Item>
                           </Menu.Items>
@@ -135,9 +136,9 @@ export default function MainLayout({ children }: MainLayoutProps) {
                       Your Profile
                     </Disclosure.Button>
                     <Disclosure.Button
-                      as="a"
-                      href="/auth/signout"
-                      className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-indigo-500 hover:bg-opacity-75"
+                      as="button"
+                      onClick={() => signOut()}
+                      className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-indigo-500 hover:bg-opacity-75 w-full text-left"
                     >
                       Sign out
                     </Disclosure.Button>

@@ -5,7 +5,7 @@ import SignInForm from './SignInForm'
 import { authOptions } from '@/lib/auth/config'
 
 export const metadata: Metadata = {
-  title: 'Sign In - Rwanda Community Health Research Tool',
+  title: 'Sign In - Scora Community Health Research Tool',
   description: 'Sign in to access the research tool',
 }
 
