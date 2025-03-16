@@ -2,10 +2,12 @@
 
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function SignInForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -23,6 +25,7 @@ export default function SignInForm() {
         redirect: false,
         email,
         password,
+        callbackUrl,
       })
 
       if (result?.error) {
@@ -31,7 +34,7 @@ export default function SignInForm() {
         return
       }
 
-      router.push('/dashboard')
+      router.push(callbackUrl)
       router.refresh()
     } catch (error) {
       setError('An error occurred. Please try again.')
